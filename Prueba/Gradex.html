@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" href="../Media/Grade Glow.jpg">
+    <title>GradeGlow - Academic Excellence Portal</title>
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1e3a8a;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --text: #e2e8f0;
+            --card-bg: #1e293b;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--accent), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(30, 58, 138, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .feature i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        /* News Section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .news-image {
+            height: 200px;
+            background: var(--accent);
+            background: linear-gradient(45deg, var(--accent), #1e40af);
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 60px 2rem 30px;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: var(--light);
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 80px 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>GradeGlow</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#importance">Importance</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#creators">Creators</a></li>
+                    <li><a href="#news">News</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h2>Welcome to GradeGlow</h2>
+            <p>Revolutionizing academic performance tracking with our advanced database system. Monitor, analyze, and improve your grades like never before.</p>
+            <a href="#features" class="cta-button">Explore Platform</a>
+        </div>
+    </section>
+
+    <!-- Importance Section -->
+    <section id="importance">
+        <h2 class="section-title">Why Good Grades Matter</h2>
+        <div class="cards-grid">
+            <div class="card fade-in">
+                <i class="fas fa-brain"></i>
+                <h3>Academic Foundation</h3>
+                <p>Strong grades build a solid foundation for advanced learning and critical thinking skills essential for success in higher education and professional life.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-door-open"></i>
+                <h3>Opportunity Creation</h3>
+                <p>Excellent academic performance opens doors to scholarships, prestigious universities, and competitive career opportunities that shape your future.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-chart-line"></i>
+                <h3>Skill Development</h3>
+                <p>The discipline required to maintain good grades translates directly to valuable workplace skills like time management and attention to detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2 class="section-title">Platform Features</h2>
+        <div class="features-grid">
+            <div class="feature fade-in">
+                <i class="fas fa-database"></i>
+                <h3>Secure Database</h3>
+                <p>Advanced encryption and security protocols ensure your academic data remains protected and confidential.</p>
+            </div>
+            <div class="feature fade-in">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Analytics Dashboard</h3>
+                <p>Visualize your academic progress with interactive charts and performance metrics.</p>
+            </div>
+            <div class="feature fade-in">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Access</h3>
+                <p>Access your grades and academic information anytime, anywhere with our responsive design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creators Section -->
+    <section id="creators">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <div class="member-photo">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Levi Ruben</h3>
+                <p>Lead Developer</p>
+                <p>¡Supérate! ADOC Scholar</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Karla Iveth</h3>
+                <p>UI/UX Designer</p>
+                <p>¡Supérate! ADOC Scholar</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Josue Natael</h3>
+                <p>Database Architect</p>
+                <p>¡Supérate! ADOC Scholar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+        <h2 class="section-title">Latest News</h2>
+        <div class="news-grid">
+            <div class="news-card fade-in">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <div class="news-date">March 15, 2024</div>
+                    <h3>New Grade Tracking Features</h3>
+                    <p>We've launched advanced analytics tools to help students better understand their academic performance trends.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <div class="news-date">March 10, 2024</div>
+                    <h3>Partnership with Universities</h3>
+                    <p>GradeGlow now partners with 5 major universities to provide seamless grade integration.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <div class="news-date">March 5, 2024</div>
+                    <h3>Mobile App Launch</h3>
+                    <p>Our new mobile application is now available on both iOS and Android platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>GradeGlow</h3>
+                <p>Transforming academic performance tracking through innovative technology and dedicated support.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#importance">Importance of Grades</a></li>
+                    <li><a href="#features">Platform Features</a></li>
+                    <li><a href="#creators">Our Team</a></li>
+                    <li><a href="#news">Latest News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@gradeglow.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Academic Innovation Center</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 GradeGlow. All rights reserved. | Created by ¡Supérate! ADOC Scholars</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and features
+        document.querySelectorAll('.card, .feature, .team-member, .news-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'var(--primary)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)';
+                header.style.boxShadow = 'var(--shadow)';
+            }
+        });
+    </script>
+</body>
+</html>
