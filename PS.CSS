@@ -1257,13 +1257,16 @@
             border: 1px solid #ff6b6b;
         }
 
-        @media (max-width: 992px) {
+               @media (max-width: 992px) {
             .contact-wrapper {
                 grid-template-columns: 1fr;
             }
             
             .section-title {
                 font-size: 2.2rem;
+            }
+            .detail-content h3{
+                margin-right: 60%;
             }
         }
 
@@ -1280,6 +1283,9 @@
             .detail-icon {
                 margin-right: 0;
                 margin-bottom: 10px;
+            }
+              .detail-content h3{
+                margin-right: 60%;
             }
         }
 
