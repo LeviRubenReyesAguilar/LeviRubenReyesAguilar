@@ -338,7 +338,52 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
-        
+                  @media (max-width: 768px) {
+           .hero-content p{
+              position: relative;
+                right: auto;
+                top: auto;
+                margin: 30px auto;
+            }
+            .hero-content h1 {
+              position: relative;
+                right: auto;
+                top: auto;
+                margin: 30px auto;
+            
+            }
+            .btn {
+                   position: relative;
+                right: auto;
+                top: auto;
+                margin: 30px auto;
+                
+             }
+
+            }
+            
+           
+          @media (max-width: 480px) {
+            .hero-content p{
+             position: relative;
+                right: auto;
+                top: auto;
+                margin: 20px auto;
+            }
+            .hero-content h1 {
+                 position: relative;
+                right: auto;
+                top: auto;
+                margin: 20px auto;
+            }
+            .btn {
+                   position: relative;
+                right: auto;
+                top: auto;
+                margin: 20px auto;
+                
+            }
+        }
 
         
 
